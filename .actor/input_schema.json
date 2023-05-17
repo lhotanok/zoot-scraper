@@ -1,0 +1,39 @@
+{
+    "title": "CheerioCrawler Template",
+    "type": "object",
+    "schemaVersion": 1,
+    "properties": {
+        "startUrls": {
+            "title": "Start URLs",
+            "type": "array",
+            "description": "Enter URLs of product categories such as `'https://www.zoot.cz/katalog/17504/zeny'` or URLs of the individual products.",
+            "editor": "stringList",
+            "prefill": [
+                "https://www.zoot.cz/katalog/17504/zeny",
+                "https://www.zoot.cz/katalog/17572/muzi",
+                "https://www.zoot.cz/vse-pro-deti"
+            ]
+        },
+        "maxItems": {
+            "title": "Max items",
+            "type": "integer",
+            "description": "Set the maximum number of items you want to scrape. If you leave this field unset, the actor will extract all available items.",
+            "minimum": 0,
+            "prefill": 100,
+            "unit": "items"
+        },
+        "proxyConfiguration": {
+            "title": "Proxy Configuration",
+            "type": "object",
+            "description": "Use either automatic Apify proxies or your own.",
+            "prefill": {
+                "useApifyProxy": true
+            },
+            "default": {
+                "useApifyProxy": true
+            },
+            "editor": "proxy",
+            "sectionCaption": "Advanced options (proxy configuration)"
+        }
+    }
+}
