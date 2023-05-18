@@ -1,11 +1,11 @@
 import { CheerioCrawlingContext, Request } from 'crawlee';
-import { LABELS, PRODUCT_LINKS_SEL } from './constants.js';
+import { LABELS, PRODUCT_DETAIL_URL_REGEX, PRODUCT_LINKS_SEL } from './constants.js';
 
 export const categorizeUrls = (urls: string[]) : Request[] => {
     const categorizedRequests = urls.map((url) => {
         let label = LABELS.CATEGORY;
 
-        if (url.match(/\/polozka\//i)) {
+        if (url.match(PRODUCT_DETAIL_URL_REGEX)) {
             label = LABELS.DETAIL;
         }
 
@@ -32,7 +32,7 @@ export const enqueueProductDetails = async (context: CheerioCrawlingContext) => 
 };
 
 export const getCurrentPage = (url: string): number => {
-    const currentPageMatches = url.match(/\/stranka\/(\d+)/) || [];
+    const currentPageMatches = url.match(/\/(stranka|pagina)[/:](\d+)/) || [];
 
     const currentPageText = currentPageMatches[1] || '1';
 

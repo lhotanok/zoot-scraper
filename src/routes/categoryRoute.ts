@@ -20,12 +20,15 @@ const enqueueNextPages = async (context: CheerioCrawlingContext) => {
     const currentPage = getCurrentPage(url);
 
     if (new URL(url).searchParams.get('p')) {
-        log.info(`Opened page ${currentPage}, not enqueueing next pages.
-        If you want to crawl all category pages, remove page parameter 'p=${currentPage}' from your start URL.`, { url });
+        log.info(
+            `Opened page ${currentPage}, not enqueueing next pages.
+            If you want to crawl all category pages, remove page parameter 'p=${currentPage}' from your start URL.`,
+            { url },
+        );
         return;
     }
 
-    const nextPageUrls = buildNextPageUrls($);
+    const nextPageUrls = buildNextPageUrls($, url);
 
     const { processedRequests } = await enqueueLinks({
         urls: nextPageUrls,
@@ -42,20 +45,22 @@ const enqueueNextPages = async (context: CheerioCrawlingContext) => {
     );
 };
 
-const buildNextPageUrls = ($: CheerioRoot) : string[] => {
+const buildNextPageUrls = ($: CheerioRoot, currentUrl: string) : string[] => {
     const totalPages = parseTotalPagesCount($);
 
     const examplePageRelPaths = $(PAGINATION_PAGES_SEL).map(
-        (_i, el) => $(el).attr('href') || '',
-    );
+        (_i, el) => $(el).attr('href') || $(el).text(),
+    ).toArray();
 
     const lastRelPath = examplePageRelPaths[examplePageRelPaths.length - 1];
-    const examplePageLink = `https://www.zoot.cz${lastRelPath}`;
+    const examplePageLink = `${new URL(currentUrl).origin}${lastRelPath}`;
 
     const nextPageUrls: string[] = [];
 
     for (let i = 2; i <= totalPages; i++) {
-        const nextPageUrl = examplePageLink.replace(/stranka\/\d+/i, `stranka/${i}`);
+        const nextPageUrl = examplePageLink
+            .replace(/stranka\/\d+/i, `stranka/${i}`)
+            .replace(/pagina:\d+/i, `pagina:${i}`);
 
         nextPageUrls.push(nextPageUrl.toString());
     }
