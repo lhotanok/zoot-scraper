@@ -8,17 +8,23 @@ Let's explore an example product to get a glimpse of the collected data:
 
 **👗 Product name**: Šaty French Connection
 
-**💰 Price**: 3 119 Kč (original price: 6 249 Kč, extra discount code: `20NAZOOT`)
-
-**🖼️ Thumbnail**:
-
-<img src="https://image.zoot.cz/cache2/fit/954x1281/000/000/007/677/7677270.jpeg" alt="Thumbnail" style="max-width: 250px; float: left; margin-right: 100%; margin-bottom: 1%">
-
 **🏷️ Brand**: [French Connection](https://www.zoot.cz/znacka/15105/french-connection)
 
 **🌐 Breadcrumbs**:
 
 - [Šaty](https://www.zoot.cz/kategorie/22911/zeny/saty) > [Šaty na denní nošení](https://www.zoot.cz/kategorie/22926/zeny/saty/saty-na-denni-noseni)
+
+**🖼️ Thumbnail**:
+
+<img src="https://image.zoot.cz/cache2/fit/954x1281/000/000/007/677/7677270.jpeg" alt="Thumbnail" style="max-width: 250px; float: left; margin-right: 100%; margin-bottom: 1%">
+
+**💰 Price**: 3 119 Kč (original price: 6 249 Kč, extra discount code: `20NAZOOT`)
+
+**📏 Available Sizes**:
+
+- S
+- M
+- L (Poslední kousek!)
 
 **🔍 Attributes**:
 
@@ -29,12 +35,6 @@ Let's explore an example product to get a glimpse of the collected data:
 - **Modelka měří**: 172 cm
 - **Modelka váží**: 49 kg
 - **Modelka má na sobě velikost**: XS
-
-**📏 Available Sizes**:
-
-- S
-- M
-- L (Poslední kousek!)
 
 This example showcases the data extracted from a specific product using Zoot Scraper. The scraper can be utilized to extract data for any product available on Zoot's website. You have the flexibility to download the extracted data in various formats, including JSON, CSV, HTML, or XML. Here's an example of the JSON output corresponding to the product mentioned above:
 
