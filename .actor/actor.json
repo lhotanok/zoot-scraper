@@ -1,12 +1,58 @@
 {
 	"actorSpecification": 1,
 	"name": "zoot-scraper",
-	"title": "Project Cheerio Crawler Typescript",
-	"description": "Crawlee and Cheerio project in typescript.",
+	"title": "Zoot Scraper",
+	"description": "This actor extracts product data from Zoot.",
 	"version": "0.0",
 	"meta": {
 		"templateId": "ts-crawlee-cheerio"
 	},
 	"input": "./input_schema.json",
-	"dockerfile": "./Dockerfile"
+	"dockerfile": "./Dockerfile",
+	"storages": {
+        "dataset": {
+            "actorSpecification": 1,
+            "views": {
+                "overview": {
+                    "title": "Overview",
+                    "transformation": {
+                        "fields": [
+                            "thumbnail",
+                            "name",
+							"brand.link",
+							"currentBestPrice.formattedPrice",
+							"sizes",
+							"attributes",
+							"available",
+                            "url"
+                        ],
+                        "flatten": [
+							"brand",
+							"currentBestPrice"
+                        ]
+                    },
+                    "display": {
+                        "component": "table",
+                        "properties": {
+                            "thumbnail": {
+                                "format": "image"
+                            },
+							"brand.link": {
+                                "label": "Brand",
+                                "format": "link"
+                            },
+							"currentBestPrice.formattedPrice": {
+                                "label": "Current best price",
+                                "format": "text"
+                            },
+                            "url": {
+                                "label": "URL",
+                                "format": "link"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
 }
