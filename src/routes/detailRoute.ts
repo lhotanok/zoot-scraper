@@ -56,13 +56,15 @@ const parseCurrentPrice = ($: CheerioRoot) => {
     const priceText = $(PRICE_SEL).attr('content') || '';
 
     const value = priceText ? parseFloat(priceText) : null;
-    const formattedPrice = $(CURRENT_BEST_FORMATTED_PRICE_SEL).text()
-        || $(CURRENT_DISCOUNTED_PRICE_SEL).text()
-        || $(ORIGINAL_FORMATTED_PRICE_SEL).text();
+    let formattedPrice = $(CURRENT_BEST_FORMATTED_PRICE_SEL).text()
+        || $(CURRENT_DISCOUNTED_PRICE_SEL).text();
 
-    const formatted = parseFormattedPrice(
-        formattedPrice.replace(/[\d.,]+/, priceText),
-    );
+    if (!formattedPrice) {
+        formattedPrice = $(ORIGINAL_FORMATTED_PRICE_SEL).text()
+            .replace(/[\d.,]+/, priceText);
+    }
+
+    const formatted = parseFormattedPrice(formattedPrice);
 
     return {
         value,
