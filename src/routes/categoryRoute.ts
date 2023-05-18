@@ -70,7 +70,7 @@ const buildNextPageUrls = ($: CheerioRoot, currentUrl: string) : string[] => {
 
 const parseTotalPagesCount = ($: CheerioRoot) : number => {
     const paginationPages = $(PAGINATION_PAGES_SEL).map((_i, el) => {
-        const page = $(el).attr('data-number') || '-1';
+        const page = $(el).attr('data-number') || $(el).text() || '-1';
         return parseInt(page, 10);
     });
 
