@@ -60,7 +60,9 @@ const parseCurrentPrice = ($: CheerioRoot) => {
         || $(CURRENT_DISCOUNTED_PRICE_SEL).text()
         || $(ORIGINAL_FORMATTED_PRICE_SEL).text();
 
-    const formatted = parseFormattedPrice(formattedPrice);
+    const formatted = parseFormattedPrice(
+        formattedPrice.replace(/[\d.,]+/, priceText),
+    );
 
     return {
         value,
@@ -92,8 +94,10 @@ const parseOriginalPrice = ($: CheerioRoot) => {
 };
 
 const parseFormattedPrice = (priceText: string) => {
-    return priceText.replace(/^[^\n]+\n+/, '')
+    return priceText
+        .replace(/^[^\n]+\n+/, '')
         .trim()
+        .replace(/\.00/, '')
         .replace(/\n.+$/, '') || null;
 };
 

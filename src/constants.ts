@@ -31,7 +31,7 @@ export const PRICE_CURRENCY_SEL = [
 ].join(' , ');
 
 const CZ_SK_PRICE_SEL = '#buyWidget [itemprop="price"][content]';
-const RO_PRICE_SEL = '.c-product-price__price [content]';
+const RO_PRICE_SEL = '.c-product-price__price [content] , .product-detail__price span[content]';
 
 export const PRICE_SEL = [
     CZ_SK_PRICE_SEL,
@@ -42,7 +42,7 @@ export const CURRENT_BEST_FORMATTED_PRICE_SEL = '.price--detail .price__extra st
 export const CURRENT_DISCOUNTED_PRICE_SEL = '.price--detail .price__discounted';
 
 const CZ_SK_ORIGINAL_FORMATTED_PRICE_SEL = '.price--detail .price__value strong , .price--detail .price__original';
-const RO_ORIGINAL_FORMATTED_PRICE_SEL = '.c-product-price__price-original s';
+const RO_ORIGINAL_FORMATTED_PRICE_SEL = '.c-product-price__price-original s , .product-detail__price s';
 
 export const ORIGINAL_FORMATTED_PRICE_SEL = [
     CZ_SK_ORIGINAL_FORMATTED_PRICE_SEL,
