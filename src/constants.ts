@@ -85,3 +85,11 @@ export const SIZES_SEL = [
     CZ_SK_SIZES_SEL,
     RO_SIZES_SEL,
 ].join(' , ');
+
+const CZ_SK_BRAND_SEL = '[data-test="dealDetail__brandLogo"] [href]';
+const RO_BRAND_SEL = '.product-detail__brand[href]';
+
+export const BRAND_SEL = [
+    CZ_SK_BRAND_SEL,
+    RO_BRAND_SEL,
+].join(' , ');

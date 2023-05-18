@@ -2,6 +2,7 @@ import { Actor } from 'apify';
 import { CheerioCrawlingContext, CheerioRoot, htmlToText } from 'crawlee';
 import { CrawleeState } from '../types.js';
 import {
+    BRAND_SEL,
     BREADCRUMBS_SEL,
     CURRENT_BEST_FORMATTED_PRICE_SEL,
     CURRENT_DISCOUNTED_PRICE_SEL,
@@ -30,6 +31,9 @@ export const detailRoute = async (context: CheerioCrawlingContext) => {
 
     state.remainingItems--;
 
+    const images = parseImageLinks($);
+    const sizes = parseSizes($);
+
     await Actor.pushData({
         url,
         name: title.replace(/ \| ZOOT.+$/i, ''),
@@ -37,11 +41,14 @@ export const detailRoute = async (context: CheerioCrawlingContext) => {
         currentBestPrice: parseCurrentPrice($),
         originalPrice: parseOriginalPrice($),
         saleCode: $(SALE_CODE_SEL).text() || null,
-        images: parseImageLinks($),
+        thumbnail: images[0] || null,
+        images,
+        brand: parseBrand($, url),
         breadcrumbs: parseBreadcrumbs($, url),
         description: $(DESCRIPTION_SEL).text().trim() || null,
         attributes: url.match(/zoot.ro/i) ? parseRoLayoutAttributes($) : parseCzSkLayoutAttributes($),
-        sizes: parseSizes($),
+        sizes,
+        available: sizes.filter((size) => size.available).length > 0,
     });
 };
 
@@ -50,7 +57,8 @@ const parseCurrentPrice = ($: CheerioRoot) => {
 
     const value = priceText ? parseFloat(priceText) : null;
     const formattedPrice = $(CURRENT_BEST_FORMATTED_PRICE_SEL).text()
-        || $(CURRENT_DISCOUNTED_PRICE_SEL).text();
+        || $(CURRENT_DISCOUNTED_PRICE_SEL).text()
+        || $(ORIGINAL_FORMATTED_PRICE_SEL).text();
 
     const formatted = parseFormattedPrice(formattedPrice);
 
@@ -159,9 +167,21 @@ const parseSizes = ($: CheerioRoot) => {
         return {
             size: size.replace(/ .*$/, ''),
             available,
-            note: note || sizeWithNote.split(' ')[1] || null,
+            note: note || sizeWithNote.split(' ')[1],
         };
     }).toArray();
 
     return sizes;
+};
+
+const parseBrand = ($: CheerioRoot, url: string) => {
+    const { origin } = new URL(url);
+
+    const link = `${origin}${$(BRAND_SEL).attr('href')}`;
+    const logo = $(BRAND_SEL).find('img[src]').attr('src') || null;
+    const name = $(BRAND_SEL).text().trim();
+
+    return url.match(/zoot.ro/i)
+        ? { link, name }
+        : { link, logo };
 };
