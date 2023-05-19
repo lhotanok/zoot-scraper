@@ -57,7 +57,7 @@ export const SALE_CODE_SEL = [
     RO_SALE_CODE_SEL,
 ].join(' , ');
 
-const CZ_SK_GALLERY_IMAGES_SEL = 'li.b-product-gallery__thumbs-item img[src]';
+const CZ_SK_GALLERY_IMAGES_SEL = 'li.b-product-gallery__thumbs-item img[src]  , .b-product-gallery__item a[href]';
 const RO_GALLERY_IMAGES_SEL = '.product-image__thumb[href]';
 
 export const GALLERY_IMAGES_SEL = [

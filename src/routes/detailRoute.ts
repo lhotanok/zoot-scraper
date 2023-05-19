@@ -120,7 +120,7 @@ const parseImageLinks = ($: CheerioRoot) => {
         (link) => link.replace(/fit\/[^/]+\//i, 'fit/1908x2562/'),
     );
 
-    return largeImageLinks;
+    return Array.from(new Set(largeImageLinks));
 };
 
 const parseBreadcrumbs = ($: CheerioRoot, url: string) => {
