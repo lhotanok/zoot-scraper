@@ -1,0 +1,166 @@
+{
+	"info": {
+		"_postman_id": "5b6d5657-71a1-4667-9e65-aa6f9ef98876",
+		"name": "Zoot",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "19767069"
+	},
+	"item": [
+		{
+			"name": "Product detail",
+			"item": [
+				{
+					"name": "Czech Product Detail",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://www.zoot.cz/polozka/2955683/saty-french-connection-3",
+							"protocol": "https",
+							"host": [
+								"www",
+								"zoot",
+								"cz"
+							],
+							"path": [
+								"polozka",
+								"2955683",
+								"saty-french-connection-3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Romanian Product Detail",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://www.zoot.ro/femei/detaliu-produs/376176-versace-jeans-couture-fusta/tot/8532:albastru-modra/",
+							"protocol": "https",
+							"host": [
+								"www",
+								"zoot",
+								"ro"
+							],
+							"path": [
+								"femei",
+								"detaliu-produs",
+								"376176-versace-jeans-couture-fusta",
+								"tot",
+								"8532:albastru-modra",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Slovakian Product Detail",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://www.zoot.sk/polozka/2955683/saty-na-denne-nosenie-pre-zeny-french-connection-cierna-3",
+							"protocol": "https",
+							"host": [
+								"www",
+								"zoot",
+								"sk"
+							],
+							"path": [
+								"polozka",
+								"2955683",
+								"saty-na-denne-nosenie-pre-zeny-french-connection-cierna-3"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Category Search",
+			"item": [
+				{
+					"name": "Czech Category Search",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://www.zoot.cz/kategorie/22911/zeny/saty/razeni/nejdrazsi/",
+							"protocol": "https",
+							"host": [
+								"www",
+								"zoot",
+								"cz"
+							],
+							"path": [
+								"kategorie",
+								"22911",
+								"zeny",
+								"saty",
+								"razeni",
+								"nejdrazsi",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Slovakian Category Search",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://www.zoot.sk/kategoria/22911/zeny/saty?slug=saty",
+							"protocol": "https",
+							"host": [
+								"www",
+								"zoot",
+								"sk"
+							],
+							"path": [
+								"kategoria",
+								"22911",
+								"zeny",
+								"saty"
+							],
+							"query": [
+								{
+									"key": "slug",
+									"value": "saty"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Romanian Category Search",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://www.zoot.ro/femei/top:imbracaminte/",
+							"protocol": "https",
+							"host": [
+								"www",
+								"zoot",
+								"ro"
+							],
+							"path": [
+								"femei",
+								"top:imbracaminte",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
