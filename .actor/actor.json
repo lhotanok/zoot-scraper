@@ -1,15 +1,15 @@
 {
-	"actorSpecification": 1,
-	"name": "zoot-scraper",
-	"title": "Zoot Scraper",
-	"description": "This actor extracts product data from Zoot.",
-	"version": "0.0",
-	"meta": {
-		"templateId": "ts-crawlee-cheerio"
-	},
-	"input": "./input_schema.json",
-	"dockerfile": "./Dockerfile",
-	"storages": {
+    "actorSpecification": 1,
+    "name": "zoot-scraper",
+    "title": "Zoot Scraper",
+    "description": "This actor extracts product data from Zoot.",
+    "version": "0.0",
+    "meta": {
+        "templateId": "ts-crawlee-cheerio"
+    },
+    "input": "./input_schema.json",
+    "dockerfile": "./Dockerfile",
+    "storages": {
         "dataset": {
             "actorSpecification": 1,
             "views": {
@@ -19,16 +19,17 @@
                         "fields": [
                             "thumbnail",
                             "name",
-							"brand.link",
-							"currentBestPrice.formattedPrice",
-							"sizes",
-							"attributes",
-							"available",
+                            "brand.link",
+                            "currentBestPrice.value",
+                            "priceCurrency",
+                            "sizes",
+                            "attributes",
+                            "available",
                             "url"
                         ],
                         "flatten": [
-							"brand",
-							"currentBestPrice"
+                            "brand",
+                            "currentBestPrice"
                         ]
                     },
                     "display": {
@@ -37,13 +38,16 @@
                             "thumbnail": {
                                 "format": "image"
                             },
-							"brand.link": {
+                            "brand.link": {
                                 "label": "Brand",
                                 "format": "link"
                             },
-							"currentBestPrice.formattedPrice": {
+                            "currentBestPrice.value": {
                                 "label": "Current best price",
-                                "format": "text"
+                                "format": "number"
+                            },
+                            "priceCurrency": {
+                                "label": "Currency"
                             },
                             "url": {
                                 "label": "URL",
